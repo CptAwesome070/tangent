@@ -39,3 +39,8 @@
 .negative{
   color:red;
 }
+.btn, .btn-lg, .btn-primary, .btn-block{
+  background-color: #54dac1;
+  background-image: none;
+  border-color: #54dac1;
+}
