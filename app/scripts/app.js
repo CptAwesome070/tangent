@@ -17,6 +17,13 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .factory('tokenFetch',function($cookies) {
+    return {
+      getToken: function () {
+        return $cookies.get('token');
+      }
+    }
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -29,7 +36,18 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/projects', {
+        templateUrl: 'views/projects.html',
+        controller: 'ProjectsCtrl',
+        controllerAs: 'projects'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
