@@ -32,7 +32,7 @@
         <td> <i class="fa fa-check-circle fa-lg" ng-class="{positive: p.is_active, negative: !p.is_active}"></i></td>
         <td>{{p.start_date}}</td>
         <td>
-          <i class="fa fa-search fa-lg" style="color:#54dac1" ></i>
+          <a href="" ng-click="clickView(p)" ><i class="fa fa-search fa-lg" style="color:#54dac1" ></i></a>
           <i class="fa fa-edit fa-lg" style="color:#54dac1"></i>
           <i class="fa fa-trash fa-lg" style="color:#54dac1"></i>
         </td>
@@ -83,6 +83,55 @@
 
             <button class="btn btn-lg btn-primary btn-block" type="submit" >Add Project</button>
           </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The View Modal -->
+  <div class="modal fade" id="ProjectViewModal" tabindex="-1" role="dialog" aria-labelledby="Stock" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="" style="color: #54dac1">{{selProject.title}}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="lead">{{selProject.description}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="text-align: center">
+              <h4 style="margin: 0 auto">Start Date: {{selProject.start_date}}</h4>
+            </div>
+            <div class="col-md-6" style="text-align: center">
+              <h4 >End Date: {{selProject.end_date}}</h4>
+            </div>
+          </div>
+          <div class="row" >
+
+              <table class="table-striped" ng-if="selProject.task_set.length > 0" style="margin: 0 auto">
+                <thead>
+                  <td style="font-weight: bold">Title</td>
+                  <td style="font-weight: bold">Due Date</td>
+                  <td style="font-weight: bold">Estimated Hours</td>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="task in selProject.task_set">
+                    <td style="padding: 5px">{{task.title}}</td>
+                    <td style="padding: 5px">{{task.due_date}}</td>
+                    <td style="padding: 5px">{{task.estimated_hours}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            <h5 style="margin: 0 auto" ng-if="selProject.task_set.length == 0">There are no tasks allocated for this Project, would you like to add one?</h5>
+
+          </div>
+
+
 
         </div>
       </div>

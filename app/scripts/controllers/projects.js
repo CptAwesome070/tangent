@@ -13,6 +13,7 @@ angular.module('tangentApp')
       is_billable: null,
       is_active: null
     };
+    $scope.selProject = null;
 
     /* initial scope loading function, checks if the token is still valid in the cookie, and not yet expired */
     $scope.init = function(){
@@ -45,7 +46,7 @@ angular.module('tangentApp')
         });
       }
     }
-
+    /* add project function */
     $scope.clickAdd = function(){
       $('#ProjectAddModal').modal('show');
     }
@@ -65,9 +66,12 @@ angular.module('tangentApp')
         $scope.projects.push(data);
       }).error(function (error, status) {
         console.log(error);
-
-
       });
+    }
+
+    $scope.clickView = function(project){
+      $scope.selProject = project;
+      $('#ProjectViewModal').modal('show');
     }
 
     $scope.init();
