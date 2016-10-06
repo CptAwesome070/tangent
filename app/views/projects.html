@@ -1,4 +1,49 @@
 <div class="row marketing">
-  <h4>Hello there and welcome to the projects page</h4>
+  <h4>Projects</h4>
 
+  <table class="table table-striped">
+    <thead>
+      <td>Title</td>
+      <td>Description</td>
+      <td>Start Date</td>
+      <td>End Date</td>
+      <td>Is Billable</td>
+      <td>Is Active</td>
+      <td>Created</td>
+      <td>Actions</td>
+    </thead>
+    <tbody>
+      <tr ng-repeat="p in projects">
+        <td>{{p.title}}</td>
+        <td>{{p.description}}</td>
+        <td>{{p.start_date | date: longDate}}</td>
+        <td>{{p.end_date | date: longDate}}</td>
+        <td>
+          <i class="fa fa-check-circle fa-lg" ng-class="{positive: p.is_billable, negative: !p.is_billable}"></i>
+        </td>
+        <td> <i class="fa fa-check-circle fa-lg" ng-class="{positive: p.is_active, negative: !p.is_active}"></i></td>
+        <td>{{p.start_date}}</td>
+        <td>
+          <i class="fa fa-check-circle fa-lg" style="color:blue" ></i>
+          <i class="fa fa-check-circle fa-lg" style="color:green"></i>
+          <i class="fa fa-check-circle fa-lg" style="color:red"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- The Add Modal -->
+  <div class="modal fade" id="StockAddModal" tabindex="-1" role="dialog" aria-labelledby="Stock" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -30,6 +30,9 @@ angular.module('tangentApp')
         $scope.token = data.token;
         $cookies.put('token', data.token);
         $location.url('/projects');
+
+
+
       }).error(function (error, status) {
         // to toast error
 
