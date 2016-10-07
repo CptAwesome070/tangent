@@ -34,7 +34,7 @@
         <td>
           <a href="" ng-click="clickView(p)" ><i class="fa fa-search fa-lg" style="color:#54dac1" ></i></a>
           <i class="fa fa-edit fa-lg" style="color:#54dac1"></i>
-          <i class="fa fa-trash fa-lg" style="color:#54dac1"></i>
+          <a href="" ng-click="clickDelete(p)" ><i class="fa fa-trash fa-lg" style="color:#54dac1"></i></a>
         </td>
       </tr>
     </tbody>
@@ -105,11 +105,14 @@
           </div>
           <div class="row">
             <div class="col-md-6" style="text-align: center">
-              <h4 style="margin: 0 auto">Start Date: {{selProject.start_date}}</h4>
+              <h4 >Start Date: </h4><p class="lead"> {{selProject.start_date}}</p>
             </div>
             <div class="col-md-6" style="text-align: center">
-              <h4 >End Date: {{selProject.end_date}}</h4>
+              <h4 >End Date:</h4><p class="lead"> {{selProject.end_date}}</p>
             </div>
+          </div>
+          <div class="row">
+            <h2></h2>
           </div>
           <div class="row" >
 
@@ -121,18 +124,49 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="task in selProject.task_set">
-                    <td style="padding: 5px">{{task.title}}</td>
-                    <td style="padding: 5px">{{task.due_date}}</td>
-                    <td style="padding: 5px">{{task.estimated_hours}}</td>
+                    <td style="padding: 5px">
+                      <div class="form-group">
+                        <input type="text" required ng-model="task.title" class="form-control"  name="task_title" placeholder="Task Title">
+                      </div>
+
+                    </td>
+                    <td style="padding: 5px">
+                      <div class="form-group">
+                        <input type="date" ng-model="task.due_date" class="form-control" required name="due_date" placeholder="Due Date">
+                      </div>
+                    </td>
+                    <td style="padding: 5px">
+                      <div class="form-group">
+                        <input type="text" ng-model="task.estimated_hours" class="form-control"  name="task_hours" placeholder="Estimated hours">
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
-            <h5 style="margin: 0 auto" ng-if="selProject.task_set.length == 0">There are no tasks allocated for this Project, would you like to add one?</h5>
-
+            <h5 style="margin: 0 auto; text-align: center" ng-if="selProject.task_set.length == 0">There are no tasks allocated for this Project</h5>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
+  <!-- The Delete Modal -->
+  <div class="modal fade" id="ProjectDeleteModal" tabindex="-1" role="dialog" aria-labelledby="Stock" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"  style="color: #54dac1">{{selProject.title}}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <h2>Are you sure you would like to delete this project?</h2>
+              <p class="lead">This action cannot be undone</p>
+              <button class="btn btn-lg btn-primary btn-block" style="background-color: grey" class="close" data-dismiss="modal" >Cancel</button>
+              <button class="btn btn-lg btn-primary btn-block" ng-click="delProject()" type="submit" >Delete Project</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
