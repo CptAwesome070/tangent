@@ -33,12 +33,13 @@
         <td>{{p.start_date}}</td>
         <td>
           <a href="" ng-click="clickView(p)" ><i class="fa fa-search fa-lg" style="color:#54dac1" ></i></a>
-          <i class="fa fa-edit fa-lg" style="color:#54dac1"></i>
+          <a href="" ng-click="clickEdit(p)" ><i class="fa fa-edit fa-lg" style="color:#54dac1"></i></a>
           <a href="" ng-click="clickDelete(p)" ><i class="fa fa-trash fa-lg" style="color:#54dac1"></i></a>
         </td>
       </tr>
     </tbody>
   </table>
+
   <!-- The Add Modal -->
   <div class="modal fade" id="ProjectAddModal" tabindex="-1" role="dialog" aria-labelledby="Stock" aria-hidden="true">
     <div class="modal-dialog">
@@ -171,4 +172,55 @@
       </div>
     </div>
   </div>
+
+  <!-- The Edit Modal -->
+  <div class="modal fade" id="ProjectEditModal" tabindex="-1" role="dialog" aria-labelledby="Stock" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" style="color: #54dac1">{{selProject.title}}</h4>
+        </div>
+        <div class="modal-body">
+          <form ng-submit="editProject(selProject)" >
+
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" ng-model="selProject.title" class="form-control" required name="title" placeholder="Project Title">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea type="text" ng-model="selProject.description" class="form-control" required name="description" placeholder="Project Description">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="start_date">Start Date</label>
+              <input type="date" ng-model="selProject.start_date" class="form-control" required name="start_date" placeholder="Start Date">
+            </div>
+
+            <div class="form-group">
+              <label for="end_date">End Date</label>
+              <input type="date" ng-model="selProject.end_date" class="form-control"  name="end_date" placeholder="End Date">
+            </div>
+
+            <div class="form-group">
+              <label for="is_billable">Is Billable</label>
+              <input type="checkbox" ng-model="selProject.is_billable" class="form-control" name="is_billable" placeholder="Is Billable">
+            </div>
+
+            <div class="form-group">
+              <label for="is_active">Is Active</label>
+              <input type="checkbox" ng-model="selProject.is_active" class="form-control"  name="is_active" placeholder="Is Active">
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" style="background-color: grey" class="close" data-dismiss="modal" >Cancel</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Update Project</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

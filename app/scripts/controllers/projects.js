@@ -119,5 +119,48 @@ angular.module('tangentApp')
     }
 
 
+    /* edit project function */
+
+    $scope.clickEdit = function(p){
+      p.start_date = new Date(p.start_date);
+      p.end_date = new Date(p.end_date);
+
+      $scope.selProject = p;
+      $('#ProjectEditModal').modal('show');
+    }
+
+    $scope.editProject = function(data){
+      data.start_date =$filter('date')(new Date(data.start_date), "yyyy-MM-dd");
+      data.end_date =$filter('date')(new Date(data.end_date), "yyyy-MM-dd");
+      if(data.is_billable == null){
+        data.is_billable = false;
+      }
+      if(data.is_active == null){
+        data.is_active = false;
+      }
+      var ind = $scope.projects.indexOf($scope.selProject);
+      $http.put('http://projectservice.staging.tangentmicroservices.com:80/api/v1/projects/'+data.pk+'/',data, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': $scope.token
+        }}).
+        success(function (data, status, headers, config) {
+          $scope.projects[ind] = data;
+          $('#ProjectEditModal').modal('hide');
+          $scope.selProject = null;
+        }).error(function (error, status) {
+          console.log(error);
+        });
+    }
+
+    /* View project */
+
+    $scope.clickView = function(project){
+
+      $scope.selProject = project;
+
+      $('#ProjectViewModal').modal('show');
+    }
+
     $scope.init();
   });
