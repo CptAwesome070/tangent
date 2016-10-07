@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tangentApp')
-  .controller('ProjectsCtrl', function ($scope, $http, $cookies, $location, tokenFetch, $filter) {
+  .controller('ProjectsCtrl', function ($scope, $http, $cookies, $location, tokenFetch, $filter, $route) {
 
     $scope.token;
     $scope.projects = [];
@@ -25,8 +25,8 @@ angular.module('tangentApp')
       }
     };
 
+
     $scope.getProjects = function(){
-      // confirm that the token is still valid
       $scope.token = tokenFetch.getToken();
       if($scope.token == undefined){
         $location.url('/login');

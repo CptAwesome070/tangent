@@ -26,16 +26,11 @@ angular.module('tangentApp')
       }
       $http.post('http://userservice.staging.tangentmicroservices.com:80/api-token-auth/',formdata).
       success(function (data, status, headers, config) {
-        console.log(data.token);
         $scope.token = data.token;
         $cookies.put('token', data.token);
         $location.url('/projects');
-
-
-
       }).error(function (error, status) {
         // to toast error
-
       });
     }
     /* call to init function */

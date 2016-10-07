@@ -44,3 +44,22 @@
   background-image: none;
   border-color: #54dac1;
 }
+.active{
+  background-color: #54dac1;
+  background-image: none;
+}
+
+.navbar-nav>.active>a{
+  background-color: #54dac1;
+  background-image: none;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a{
+  background-color: #54dac1;
+  background-image: none;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: #54dac1;
+
+}
+
