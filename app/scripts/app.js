@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name tangentApp
- * @description
- * # tangentApp
- *
- * Main module of the application.
- */
 angular
   .module('tangentApp', [
     'ngAnimate',
@@ -17,13 +9,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .factory('tokenFetch',function($cookies) {
-    return {
-      getToken: function () {
-        return $cookies.get('token');
-      }
-    }
-  })
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
