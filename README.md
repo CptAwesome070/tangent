@@ -13,6 +13,7 @@ For development you can quckly serve the application by running
 ```
 http-server -a localhost -p 8000
 ```
+And then visit `http://localhost:8000/app`in a web browser
 
 ### Production
 Ultimately in a production environment all you would need are the files within the `/app` directory.
